@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# should include set -e or the equivalent at the start of the script to avoid errors being silently ignored.
+set -e
+
+ln -s /usr/bin/libtoolize /usr/bin/libtool # See https://github.com/zeromq/libzmq/issues/1385
+
+#gem update --no-document --system && gem install --no-document sciruby-full
+
+gem install --user-install cztop
+gem install --user-install iruby --pre
+
+iruby register --force
+
