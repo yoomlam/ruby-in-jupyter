@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# should include set -e or the equivalent at the start of the script to avoid errors being silently ignored.
-set -e
+# Reference: https://repo2docker.readthedocs.io/en/latest/config_files.html#postbuild-run-code-after-installing-the-environment
+# This script runs as a user -- see https://github.com/jupyter/repo2docker/issues/192
 
-#ln -s /usr/bin/libtoolize /usr/bin/libtool # See https://github.com/zeromq/libzmq/issues/1385
+# to avoid errors being silently ignored
+set -ex
 
-#gem update --no-document --system && gem install --no-document sciruby-full
+# Install Ruby kernel for Jupyter notebook
+# Reference: https://github.com/SciRuby/iruby
+# apt packages are installed via apt.txt
 
+# Since not root, https://stackoverflow.com/questions/31596273/install-gem-in-local-folder
 # Addresses WARNING:  You don't have /home/jovyan/.gem/ruby/2.5.0/bin in your PATH, gem executables will not run.
-#PATH=$(gem environment gempath)/bin:$PATH
 PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
-#PATH=/home/jovyan/.gem/ruby/2.5.0/bin:$PATH
-
-#gem install --user-install cztop
 gem install --user-install ffi-rzmq
 gem install --user-install iruby --pre
 
