@@ -1,16 +1,10 @@
 build-essential
+libtool
+libffi-dev
 ruby
 ruby-dev
+make
 libzmq3
 libzmq3-dev
-gnuplot-nox
-libgsl0-dev
-libtool
-autoconf
-automake
-zlib1g-dev
-libsqlite3-dev
-libmagick++-dev
-imagemagick
-libatlas-base-dev
+libczmq-dev
 
