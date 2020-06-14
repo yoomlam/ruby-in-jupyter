@@ -7,6 +7,9 @@ set -e
 
 #gem update --no-document --system && gem install --no-document sciruby-full
 
+# Addresses WARNING:  You don't have /home/jovyan/.gem/ruby/2.5.0/bin in your PATH, gem executables will not run.
+PATH=$(gem environment gempath):$PATH
+
 #gem install --user-install cztop
 gem install --user-install ffi-rzmq
 gem install --user-install iruby --pre
